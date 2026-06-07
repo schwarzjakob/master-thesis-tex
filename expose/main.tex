@@ -1,0 +1,236 @@
+% =====================================================================
+% expose/main.tex — Master Thesis Exposé v2 (Jakob Schwarz)
+% Version: Single Embedded Case Study (Psycloud)
+% Compile with: pdflatex -> biber -> pdflatex x2  (or latexmk -pdf)
+% Overleaf: set compiler to pdfLaTeX, this file as main document.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{csquotes}
+
+% --- Bibliography (APA 7th; UNCONFIRMED with supervisor — see JAK-16) ---
+\usepackage[backend=biber,style=apa,natbib=true]{biblatex}
+\addbibresource{../bib/references.bib}
+% \citepos: not in local biblatex-apa (version differs from Overleaf). Define it.
+\newcommand{\citepos}[1]{\citeauthor{#1}'s~(\citeyear{#1})}
+
+\title{\vspace{-2em}\textbf{When Everyone Builds}\\[0.4em]
+\large Product Boundary Evolution in a Digital Health Startup\\
+as Generative AI Collapses Implementation Barriers}
+\author{Jakob Schwarz}
+\date{%
+  M.Sc.\ Management and Digital Technologies, LMU Munich School of Management\\[0.3em]
+  Supervision: Hannah Tilsch, M.A.\ (Chair of Digital Work, Prof.\ Dr.\ Anne-Sophie Mayer)\\[0.3em]
+  \today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+% =====================================================================
+\section{Introduction and Relevance}
+% =====================================================================
+
+% JAK-5 resolved 2026-06-07: Causal claims softened throughout §1.
+% GenAI framed as enabling condition co-occurring with other changes,
+% not as sole trigger. Whether/how GenAI drives vs. co-occurs with
+% reorganization is left explicitly open as an empirical question.
+
+Generative AI (GenAI) is rapidly becoming embedded in everyday knowledge work, with documented productivity effects \citep{brynjolfsson2023generative}, implications for organizational structure \citep{xu2025generative}, and individual-level reorganization of work practice \citep{mayer2025generation,clarke2025beyond,law2025generative}. Across this body of work, one observation recurs: when GenAI enters knowledge work, workers do not adopt it as a stable tool but continuously renegotiate what is delegated to it and what is retained. One particularly visible instance is ``vibe coding,'' in which software is produced through conversation with AI rather than direct authorship \citep{sarkar2025vibe,meske2025vibe}; it illustrates a broader phenomenon --- GenAI shifts who can do what, lowering implementation barriers for non-technical actors \citep{krings2025revolution}. Yet these dynamics have so far been observed primarily in established organizations and at the level of individual workers, leaving open how organizations as such reorganize when these shifts compound.
+
+Digital startups offer a distinctive setting in which to observe these dynamics in concentrated form. Following \citet{eggert2024ecs}, digital startups can be defined as newly established, independent business entities that leverage innovative digital technologies to create and scale their businesses under conditions of pronounced technological, economic, and general uncertainty \citep{nambisan2017digital}. Their internal organization differs systematically from established firms: small teams, scarce resources, fluid task allocation, dense interpersonal coordination, and time pressure tied to survival \citep{blank2013lean,ries2011lean}. At the heart of an early-stage digital startup sits what this thesis calls the \emph{founding product team} --- typically a founder, a technical co-founder, and (where present) an early product manager --- the small set of actors who together hold decision rights over what gets built \citep{klotz2014new,beckman2008founding}. As GenAI enters this setting alongside other organizational changes, lowered implementation barriers do not remain local: they surface in, and become entangled with, questions of role boundaries, decision rights, and governance over what counts as the product. The phenomenon under study is not ``GenAI adoption'' as an isolated event but a compound reorganization --- and whether, how, and to what extent GenAI enables the change versus co-occurring with changes driven by other factors is itself an empirical question this thesis holds open.
+
+These compound reorganizations are notoriously difficult to capture through cross-sectional interviews with multiple ventures. Founders typically recall the most salient transitions but rarely the connective tissue between them; coordination changes are often invisible to those too busy living them; and the temporal entanglement of organizational redesign with technology adoption resists snapshot accounts. A long-running embedded observation of a single startup undergoing exactly this transformation offers a different kind of leverage: visibility into how the reorganization unfolds across time, what artifacts mediate it, and which mechanisms appear to drive shifts in role boundaries, decision rights, and coordination. The thesis takes up this leverage through a single embedded case study of Psycloud, a digital health startup that, over the observation period from November 2025 through May 2026, has been simultaneously: (a)~building out a product-orchestration layer beyond founder-driven coordination, (b)~absorbing AI-assisted development capacity into its build process, (c)~renegotiating the boundary between core product and AI-generated internal tooling, and (d)~restructuring its team geometry through the arrival of a local full-stack developer alongside its remote development team. In \citepos{yin2018case} terms, the setting is a revelatory case --- a single context that makes visible, in concentrated form, a transformation that individual-level GenAI studies cannot observe and that cross-sectional interview studies struggle to reconstruct. The single-case approach is also a tested fit for studying organizational phenomena in digital startups: a case study of ECS-mediated coordination in a German digital startup yielded a conceptual model that cross-sectional designs could not have produced \citep{eggert2024ecs}.
+
+The theoretical payoff of entering this setting is to examine whether and how the mechanisms identified in the GenAI-and-knowledge-work stream \citep{clarke2025beyond,law2025generative,mayer2025generation,ulloa2025product} --- individual-level dynamics such as reflexive delegation (a knowledge worker deciding, moment to moment, whether to draft a memo herself or hand it to ChatGPT) and job crafting (the same worker, over weeks, restructuring her role around what she now offloads to the tool) --- operate and transform when observed at the organizational level. Whether a non-technical founder shipping a feature via AI tool implicitly redefines what the technical co-founder is for, or whether that redefinition is driven by other factors (strategic decisions, team-geometry changes, or regulatory constraints), is precisely what cannot be assumed in advance. Whether AI-generated tools that become operationally relied upon get absorbed into ``product'' --- and through what organizational decisions --- is an open empirical question, not a premise. The case is the setting in which these questions can be traced in real time, across multiple co-occurring changes, rather than reconstructed from interview recall after the fact.
+
+% JAK-7 resolved 2026-06-06: spine = product-boundary evolution.
+% RQ and objective updated accordingly.
+
+\paragraph{Research objective.} Develop a grounded understanding of how a digital startup's product boundary evolves as generative AI distributes building capacity across organizational roles --- traced in real time through the artifacts produced and the organizational decisions they demand.
+
+\paragraph{Research question.}
+\begin{quote}
+How does a digital startup's product boundary evolve as generative AI distributes building capacity across organizational roles?
+\end{quote}
+
+% =====================================================================
+\section{Theoretical and Conceptual Foundations}
+% =====================================================================
+
+% JAK-8 resolved: collapsed to 2 streams — (1) GenAI-in-knowledge-work /
+% reflexive delegation as micro-level foundation; (2) sociomaterial/artifact
+% perspectives as org-level frame for product-boundary evolution.
+% Dropped as named streams: effectuation, coordination theory (Faraj/Bechky),
+% role identity. Entrepreneurial decision-making background → Discussion only.
+
+The thesis draws on two bodies of literature that together open the empirical question this thesis addresses.
+
+\paragraph{GenAI and the reorganization of work practice.} A consistent finding across recent qualitative research is that GenAI does not enter knowledge work as a stable tool: workers continuously renegotiate what is delegated to it and what is retained. \citet{clarke2025beyond} develop the concept of \emph{reflexive delegation} --- a situated, ongoing recalibration of the human--AI division of labor --- in creative knowledge work. \citet{law2025generative} show that this recalibration compounds over time: workers offload routine production to AI but take on new ``AI managerial labor'' (prompting, evaluating, integrating) in return. \citet{ulloa2025product} document how product managers develop explicit heuristics for what to trust AI to handle; \citet{mayer2025generation} show that the same recalibration reshapes how workers signal the value of their work. Together, these studies establish reflexive delegation as the micro-level mechanism through which GenAI enters practice. But they share a decisive boundary condition: all study \emph{individual workers in established organizations}, where what counts as ``work'' and what counts as ``output'' is given by pre-existing roles and structures. This thesis asks what happens when those conditions are absent --- when the organization's structure, including what counts as product, is itself being built.
+
+\paragraph{Sociomateriality and the organizational life of artifacts.} When GenAI produces artifacts --- vibe-coded tools, AI-assisted specifications, generated dashboards --- those artifacts do not simply exist; they become entangled with organizational practice and reshape what the organization can do and how it coordinates. Practice-based and sociomaterial perspectives treat this entanglement as constitutive rather than incidental \citep{orlikowski2007sociomaterial,leonardi2011flexible}: the artifact and the practice co-evolve, and what an artifact \emph{becomes} in an organization is an ongoing accomplishment, not a property of the artifact at creation. In an established organization, this process of artifacts becoming embedded in practice is relatively slow and governed by existing structures. In an early-stage startup where a vibe-coded tool can be in operational use by morning, the process is accelerated and unstructured --- there is no settled product governance to absorb the artifact, so the organization must construct one. This is precisely the empirical opening the Psycloud case makes visible.
+
+\paragraph{The research gap.} These two streams converge on a precise and unstudied question. Reflexive delegation research shows that individuals recalibrate their relationship to AI continuously --- but stops at the individual level. Sociomaterial research shows that artifacts reshape organizational practice --- but has not addressed what happens when AI makes artifact creation accessible to everyone in an early-stage organization simultaneously. Neither stream addresses the organizational question that emerges at their intersection: when AI distributes building capacity across an organization that has not yet defined its product boundary, how does that boundary evolve? This is the question the Psycloud case is positioned to answer. The theoretical contribution is an extension of reflexive delegation from the individual to the organizational level, and of sociomaterial artifact analysis into the fast-moving, boundary-constructing context of AI-native startups.
+
+% =====================================================================
+\section{Methodology}
+% =====================================================================
+
+% JAK-10 resolved (§3.4 rewritten with observation as primary source).
+% HT-v2-8 structure resolved across §3.1–3.7.
+
+% JAK-9 resolved 2026-06-07 (extended): Langley-primary spine with explicit
+% compatibility analysis addressing HT-v2-7. Yin = case selection only.
+% Gioia = coding technique within episodes.
+
+\subsection*{3.1 Research Design}
+
+The research question asks how a phenomenon evolves over time --- a process question, not a variance question. Process theorizing \citep{langley1999strategies,langley2013process} is therefore the methodological spine: it traces sequences of events, identifies generative mechanisms, and produces process narratives rather than variable-based propositions. The primary analytical strategy is \emph{temporal bracketing} \citep{langley1999strategies} --- inductively identifying distinct phases in the observation period by structural change events, then applying process tracing \citep{langley2017handbook} within each phase to reconstruct what happened and why.
+
+Two further traditions inform the design in bounded ways. Yin's (\citeyear{yin2018case}) case study methodology contributes the \emph{revelatory case} concept for case selection justification; its analytical procedures are not adopted, as they follow a different epistemological logic \citep{gehman2018finding}. Gioia-style inductive coding \citep{gioia2013seeking} provides the concept-development technique within episodes --- moving from first-order codes to second-order themes to aggregate dimensions --- and is compatible with Langley's interpretivism. The combination is established in practice \citep{monazzam2024erm}. In short: Langley is the spine; Yin justifies the case selection; Gioia structures the coding.
+
+\subsection*{3.2 Case and Setting}
+
+% JAK-6 resolved 2026-06-07: Three explicit theoretical/phenomenological
+% selection criteria foregrounded. Access demoted to §3.6 and reframed
+% as methodological enablement, not basis for selection.
+
+Psycloud is a digital health startup based in Germany, with a remote development team and an observation period running from November 2025 through August 2026. It is selected on three theoretical and phenomenological grounds.
+
+\textbf{First, the process of interest is occurring and observable in real time.} Process research requires that the phenomenon under study can be traced longitudinally as it unfolds; retrospective reconstruction from interviews systematically loses the connective tissue between events \citep{langley1999strategies}. Psycloud is in active product-boundary renegotiation throughout the observation period --- not in a stable state being recalled after the fact.
+
+\textbf{Second, multiple co-occurring transformations concentrate the phenomenon in a single bounded setting.} During the observation period, Psycloud has simultaneously: (a)~built out a product-orchestration layer beyond founder-driven coordination; (b)~absorbed AI-assisted development capacity into its build process; (c)~renegotiated the boundary between core product and AI-generated internal tooling; and (d)~restructured its team geometry through the arrival of a local full-stack developer alongside the remote development team. These transformations are analytically important precisely because they co-occur: the product-boundary question surfaces explicitly and repeatedly as a result of their interaction, rather than requiring piecing together across organizations. Crucially, their co-occurrence also keeps open the empirical question of GenAI's causal role --- the entanglement of factors is part of what the case makes visible.
+
+\textbf{Third, Psycloud is an early-stage startup where product governance is still being constructed.} Unlike established organizations with pre-existing structures to absorb new tools and artifacts, Psycloud has no settled product governance: the organization is actively determining what counts as product, who decides, and on what basis --- precisely as AI-generated artifacts are arriving and demanding classification. This makes the boundary-construction process explicit and traceable in a way more mature organizations do not afford.
+
+In \citepos{yin2018case} terms, the case is a revelatory case: a single context that makes visible, in concentrated form, mechanisms that established-organization studies cannot reach and that cross-sectional interview designs cannot reconstruct. The researcher's embedded role within the organization (§3.6) enables the longitudinal real-time observation the design requires; it is a condition of methodological feasibility, not the primary rationale for case selection.
+
+\subsection*{3.3 Unit and Embedded Units of Analysis}
+
+The unit of analysis is the Psycloud product organization. The embedded units of analysis are critical decision and reorganization episodes within it, selected during early analysis on the basis of analytical leverage, evidential richness, and saturation. Episodes are identified inductively through the analysis --- structural change events in the observation period (e.g., the introduction of the product-orchestration layer, the arrival of the local developer) serve as candidate temporal anchors rather than as predetermined analytical units, consistent with temporal bracketing as a strategy \citep{langley1999strategies}.
+
+% JAK-11 resolved 2026-06-07: Language "identified inductively through
+% the analysis... candidate temporal anchors rather than predetermined
+% analytical units" is correct and sufficient for Langley's requirement.
+
+\subsection*{3.4 Data Collection}
+
+% JAK-10 resolved 2026-06-07: Observation added as first and primary
+% data source with when/where/what. JAK-12 resolved 2026-06-07: Sources
+% tiered primary vs. supporting; interview count set to 6-8 sessions.
+
+Data collection draws on two primary sources and one supporting source,
+with a reflexive journal maintained as a methodological instrument.
+Primary sources generate direct evidence of the unfolding phenomenon;
+the supporting source provides artifact context and cross-source
+corroboration. The distinction matters for how evidence is weighted
+in analysis.
+
+\textbf{Participant observation (primary).} The researcher holds the
+product-orchestration role at Psycloud throughout the full observation
+period (November 2025 through August 2026). This embedded position
+provides continuous access to product meetings, cross-functional
+coordination events, product decisions, and AI-tool interactions as they
+occur. Observation data are captured in structured field notes, written
+within 24 hours of key events; entries record what happened, who was
+involved, what artifacts were produced or invoked, and any AI-tool use
+that shaped the event. This source is central because it captures the
+connective tissue between events --- the small decisions, tool interactions,
+and coordination moves that retrospective interview accounts systematically
+lose and that cross-sectional designs cannot reach at all.
+
+\textbf{Interviews (primary).} Six to eight semi-structured interview
+sessions with core organizational actors: the CEO, COO, CTO, the local
+full-stack developer, and one representative from the remote development
+team. Two rounds are planned. The \textbf{first round} (late June/early
+July 2026, immediately after ISC registration) is the substantive round:
+sessions of 45--60 minutes, audio-recorded and transcribed, covering both
+the retrospective period (approximately the preceding six to seven months)
+and the ongoing reorganization. Starting the first round before literature
+finalization preserves a meaningful temporal gap before the second round.
+The \textbf{second round} (August 2026, after temporal phases have been
+inductively identified) is shorter and more focused: it member-checks draft
+phase reconstructions with key informants and captures how sense-making has
+evolved since round one. Interviews complement and challenge the field-note
+record; informants are asked to reconstruct events that observation data
+already document, enabling cross-source triangulation at the event level.
+
+\textbf{Artifacts (supporting).} Internal artifacts --- product roadmaps,
+ClickUp boards, development specifications, and meeting notes --- and
+AI-generated artifacts (prompts, generated outputs, vibe-coded internal
+tools) are collected throughout the observation period. This source
+provides contextual grounding and corroboration for the primary sources;
+individual artifact evidence is not used standalone to claim mechanisms.
+AI-generated artifacts warrant special note: they are traces of the
+building activity this thesis aims to trace and are treated as materially
+significant objects in their own right, not as supplementary documentation.
+
+\textbf{Reflexive journal (methodological instrument, not a data source).}
+Distinct from the field notes, the reflexive journal records the
+researcher's involvement in each observed episode, flags interpretive
+risks introduced by insider positionality, and tracks analytical choices
+across phases. It is not an evidentiary source but a self-monitoring
+instrument that feeds into the quality procedures described in §3.7.
+
+\subsection*{3.5 Analysis}
+
+Analysis proceeds in three interleaved layers. \textbf{Temporal bracketing} \citep{langley1999strategies} divides the observation period into analytically distinct phases identified inductively by structural change events. \textbf{Process tracing} \citep{langley2017handbook} is applied within each phase to each embedded episode, reconstructing sequences of events and decisions --- including which actors were involved, what organizational changes preceded each episode, what role (if any) AI tools played, and what followed --- from triangulated evidence. This approach is deliberately agnostic about causal priority: GenAI may appear as a primary driver in some episodes, as a co-occurring or enabling factor in others, or as incidental to changes driven by team-geometry shifts, strategic decisions, or regulatory context. \textbf{Gioia-style inductive coding} \citep{gioia2013seeking} develops first-order informant-centric concepts, second-order researcher-centric themes, and aggregate dimensions across episodes, supported by reflexive memo-writing. Connections to existing theoretical frameworks are deferred to the Discussion to preserve inductive openness \citep{braun2006thematic}.
+
+\subsection*{3.6 Researcher Positionality}
+
+The researcher holds the product-orchestration role within the case organization and is therefore embedded in the phenomenon under study. This positionality provides access to artifacts, conversations, and AI-generated materials that an outsider could not obtain, but also introduces interpretive risk that the design addresses explicitly. The researcher's involvement in each observed episode is documented in the reflexive journal, and analytical procedures (member checking, peer debriefing, triangulation, audit trail) are designed around this fact. Confidentiality and anonymization protocols are agreed with the case organization in advance of formal data collection.
+
+\subsection*{3.7 Quality Criteria}
+
+Triangulation is built into the design through the four data sources, with each claim about a reorganization mechanism required to find support in at least two sources --- typically an artifact trace and an interview account. Reflexivity is sustained through a dated journal, explicit memos on how the insider position may shape interpretation, and periodic peer debriefing with the supervisor. Member checking is conducted with key informants on draft phase reconstructions. An audit trail documents episode selection criteria, coding decisions, and analytical choices \citep{lincoln1985naturalistic}. Insider-bias mitigation includes structured ``make the familiar strange'' exercises early in coding and the use of alternative theoretical templates \citep{langley1999strategies}.
+
+% =====================================================================
+\section{Expected Results}
+% =====================================================================
+
+Consistent with the inductive and process-theoretical design, the thesis does not prejudge what the case will reveal. The aim is to produce a phased narrative of Psycloud's reorganization during the observation period, populated by traceable decision and coordination episodes, and to develop from it a conceptual vocabulary for the mechanisms through which a digital startup's product boundary evolves as building capacity appears to distribute across organizational roles. What those mechanisms are, and what role generative AI plays in driving versus co-occurring with the changes, are open empirical questions the study is designed to surface.
+
+% =====================================================================
+\section{Contribution}
+% =====================================================================
+
+\paragraph{Theoretical.} The thesis is positioned to contribute to the literature on GenAI and the reorganization of knowledge work \citep{clarke2025beyond,law2025generative,mayer2025generation,ulloa2025product}. That literature has established individual-level mechanisms --- such as reflexive delegation --- in established-organization settings. Whether and how analogous mechanisms operate, transform, or break down at the organizational level in an early-stage startup is what this thesis examines. The empirical contribution will be whatever the case reveals: named mechanisms, process stages, or conditions under which product-boundary renegotiation occurs. The single-case design trades cross-organizational generalizability for processual depth and mechanism visibility, in the tradition of revelatory-case research \citep{yin2018case,langley2013process}; the contribution lies in the concepts and processes the case names, not in claims of population-level regularity.
+
+\paragraph{Practical.} For founders and product leaders, the thesis offers an in-depth narrative of how one peer venture is reorganizing under GenAI, with traceable decision and coordination episodes. For investors and accelerators, it offers a process-level view of what AI-native team configurations look like as they are being built. For tool builders, the friction points the case surfaces --- the boundary between AI-generated tools and product, code ownership and maintainability, and the coordination work that AI-generated artifacts demand --- flag concrete areas where current GenAI tooling falls short.
+
+% =====================================================================
+\section*{Timeline}
+% =====================================================================
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Phase} & \textbf{Period} \\
+\midrule
+Exposé revision (v3) \& ISC registration & June 2026 \\
+First round of interviews (retrospective + ongoing) & Late June/July 2026 \\
+Ongoing observation, artifact collection, field notes & June--August 2026 \\
+Literature review finalization & July 2026 \\
+Temporal bracketing pass; episode selection finalized & July 2026 \\
+Second round of interviews (focused; member checking) & August 2026 \\
+Cross-episode coding, theory development, writing & August--September 2026 \\
+Revision \& submission & September 2026 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% =====================================================================
+\printbibliography[title={References}]
+% =====================================================================
+
+\end{document}

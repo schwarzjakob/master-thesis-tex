@@ -1,0 +1,72 @@
+% =====================================================================
+% thesis/main.tex — Master Thesis (Jakob Schwarz)
+% Skeleton. Chapters live in thesis/chapters/ and are \input below.
+% Compile: latexmk -pdf main.tex   (biber backend)
+% Overleaf: set main document = thesis/main.tex once you start writing.
+% =====================================================================
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+\usepackage[backend=biber,style=apa,natbib=true]{biblatex}
+\addbibresource{../bib/references.bib}
+
+\title{Deciding with Machines: How Generative AI Shapes Decision-Making and Role Boundaries in Founding Product Teams of Digital Startups}
+\author{Jakob Schwarz}
+\date{\today}
+
+\begin{document}
+
+% --- Front matter ---
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries Deciding with Machines\par}
+\vspace{0.5cm}
+{\large How Generative AI Shapes Decision-Making and Role Boundaries in\\
+Founding Product Teams of Digital Startups\par}
+\vspace{2cm}
+{\large Jakob Schwarz\par}
+\vspace{1cm}
+{Master's Thesis\\
+M.Sc.\ Management and Digital Technologies\\
+LMU Munich School of Management\par}
+\vspace{1cm}
+{Chair of Digital Work --- Prof.\ Dr.\ Anne-Sophie Mayer\\
+Supervisor: Hannah Tilsch, M.A.\par}
+\vspace{2cm}
+{\today\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+% --- Chapters (create these files as you write) ---
+% \input{chapters/01_introduction}
+% \input{chapters/02_literature}
+% \input{chapters/03_methodology}
+% \input{chapters/04_findings}
+% \input{chapters/05_discussion}
+% \input{chapters/06_conclusion}
+
+\chapter{Introduction}
+\label{ch:intro}
+% Placeholder. Migrate and expand from expose/main.tex after supervisor sign-off.
+Placeholder.
+
+% --- Bibliography ---
+\printbibliography[heading=bibintoc,title={References}]
+
+\end{document}

@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.idx
+*.ilg
+*.ind
+
+# Compiled PDFs (regenerate from source)
+*.pdf
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor junk
+*.swp
+*~
+.vscode/
